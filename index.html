@@ -190,11 +190,25 @@
                     <div id="feedback2" class="feedback"></div>
                 </div>
             </div>
+
+            <!-- Nytt spørsmål 3 -->
+            <div class="question-card">
+                <div class="question-number">Spørsmål 3</div>
+                <div class="clue">
+                    <strong>Ledetekst:</strong> Hva er adressen til Haugsbu?
+                </div>
+                <div class="answer-section">
+                    <label for="answer3">Ditt svar:</label>
+                    <input type="text" id="answer3" placeholder="Skriv inn stedet her...">
+                    <button onclick="checkAnswer(3)">Sjekk Svar</button>
+                    <div id="feedback3" class="feedback"></div>
+                </div>
+            </div>
         </div>
 
         <div id="successMessage" class="success-message">
             <h2><span class="emoji">🎉</span> Gratulerer! <span class="emoji">🎉</span></h2>
-            <p>Du har løst begge gåtene!</p>
+            <p>Du har løst alle gåtene!</p>
             <p>Du er en ekte geo-rebus mester! 🏆</p>
         </div>
     </div>
@@ -202,12 +216,14 @@
     <script>
         const answers = {
             1: "Maurstien 6, 0880 Oslo",
-            2: "Valö-Sandhagen 2, 45740 Fjallbacka"
+            2: "Valö-Sandhagen 2, 45740 Fjallbacka",
+            3: "Storlidalsvegen 1933"
         };
 
         const solved = {
             1: false,
-            2: false
+            2: false,
+            3: false
         };
 
         function normalizeAnswer(answer) {
@@ -227,8 +243,8 @@
                 solved[questionNumber] = true;
                 input.disabled = true;
                 
-                // Check if all questions are solved
-                if (solved[1] && solved[2]) {
+                // Check if all questions are solved (generisk for N spørsmål)
+                if (Object.values(solved).every(v => v === true)) {
                     document.getElementById('successMessage').style.display = 'block';
                 }
             } else {
@@ -237,13 +253,17 @@
             }
         }
 
-        // Allow Enter key to submit
+        // Allow Enter key to submit for each answer input
         document.getElementById('answer1').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') checkAnswer(1);
         });
 
         document.getElementById('answer2').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') checkAnswer(2);
+        });
+
+        document.getElementById('answer3').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkAnswer(3);
         });
     </script>
 </body>
