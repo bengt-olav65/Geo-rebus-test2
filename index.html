@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo-Rebus - Finn Stedene!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card:nth-child(even) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .question-number {
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .clue {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .clue strong {
+            color: #764ba2;
+        }
+
+        .answer-section {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #5a3780;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #4caf50;
+            color: white;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background: #f44336;
+            color: white;
+            display: block;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+            margin-top: 30px;
+        }
+
+        .success-message h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗺️ Geo-Rebus</h1>
+        <p class="subtitle">Finn de hemmelige stedene ved å løse gåtene!</p>
+
+        <div class="questions">
+            <div class="question-card">
+                <div class="question-number">Spørsmål 1</div>
+                <div class="clue">
+                    <strong>Ledetekst:</strong> Finn et sted med mange <strong>småkryp</strong> som har <strong>6 års bursdag</strong> i Oslo
+                </div>
+                <div class="answer-section">
+                    <label for="answer1">Ditt svar:</label>
+                    <input type="text" id="answer1" placeholder="Skriv inn stedet her...">
+                    <button onclick="checkAnswer(1)">Sjekk Svar</button>
+                    <div id="feedback1" class="feedback"></div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-number">Spørsmål 2</div>
+                <div class="clue">
+                    <strong>Ledetekst:</strong> Finn et <strong>hage</strong> med bitte små <strong>stener</strong> på svenskekysten utenfor Fjallbacka
+                </div>
+                <div class="answer-section">
+                    <label for="answer2">Ditt svar:</label>
+                    <input type="text" id="answer2" placeholder="Skriv inn stedet her...">
+                    <button onclick="checkAnswer(2)">Sjekk Svar</button>
+                    <div id="feedback2" class="feedback"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="successMessage" class="success-message">
+            <h2><span class="emoji">🎉</span> Gratulerer! <span class="emoji">🎉</span></h2>
+            <p>Du har løst begge gåtene!</p>
+            <p>Du er en ekte geo-rebus mester! 🏆</p>
+        </div>
+    </div>
+
+    <script>
+        const answers = {
+            1: "Maurstien 6, 0880 Oslo",
+            2: "Valö-Sandhagen 2, 45740 Fjallbacka"
+        };
+
+        const solved = {
+            1: false,
+            2: false
+        };
+
+        function normalizeAnswer(answer) {
+            // Remove extra spaces, convert to lowercase for comparison
+            return answer.trim().toLowerCase().replace(/\s+/g, ' ');
+        }
+
+        function checkAnswer(questionNumber) {
+            const input = document.getElementById('answer' + questionNumber);
+            const feedback = document.getElementById('feedback' + questionNumber);
+            const userAnswer = normalizeAnswer(input.value);
+            const correctAnswer = normalizeAnswer(answers[questionNumber]);
+
+            if (userAnswer === correctAnswer) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '✓ Riktig! Godt jobbet!';
+                solved[questionNumber] = true;
+                input.disabled = true;
+                
+                // Check if all questions are solved
+                if (solved[1] && solved[2]) {
+                    document.getElementById('successMessage').style.display = 'block';
+                }
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = '✗ Ikke helt riktig. Prøv igjen!';
+            }
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('answer1').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkAnswer(1);
+        });
+
+        document.getElementById('answer2').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkAnswer(2);
+        });
+    </script>
+</body>
+</html>
