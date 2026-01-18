@@ -44,8 +44,9 @@
                 <div class="clue"><strong>Ledetekst:</strong> Finn et sted med mange <strong>småkryp</strong> som har <strong>6 års bursdag</strong> i Oslo</div>
 
                 <!-- NY: illustrasjonsbilde for spørsmål 1 -->
+                <!-- Fallback: If local image fails to load, show a placeholder to keep UI intact -->
                 <div class="illustration">
-                    <img src="images/rebus1.jpeg" alt="Illustrasjon for spørsmål 1">
+                    <img src="images/rebus1.jpeg" alt="Illustrasjon for spørsmål 1" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x450?text=Illustrasjon+1';">
                 </div>
                  
                 <div class="answer-section">
@@ -61,8 +62,9 @@
                 <div class="clue"><strong>Ledetekst:</strong> Finn et <strong>hage</strong> med bitte små <strong>stener</strong> på svenskekysten utenfor Fjallbacka</div>
 
                 <!-- NY: illustrasjonsbilde for spørsmål 2 -->
+                <!-- Fallback: If local image fails to load, show a placeholder to keep UI intact -->
                 <div class="illustration">
-                    <img src="images/rebus2.jpeg" alt="Illustrasjon for spørsmål 2">
+                    <img src="images/rebus2.jpeg" alt="Illustrasjon for spørsmål 2" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x450?text=Illustrasjon+2';">
                 </div>
 
                 <div class="answer-section">
