@@ -7,7 +7,7 @@
     <style>
         /* (samme stil som før) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display:flex; justify-content:center; align-items:center; padding:20px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display:flex; justify-content:center; align-items:flex-start; padding:40px; }
         .container { background:white; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.3); max-width:800px; width:100%; padding:40px; }
         h1 { color:#667eea; text-align:center; margin-bottom:10px; font-size:2.5em; }
         .subtitle { text-align:center; color:#666; margin-bottom:40px; font-size:1.1em; }
@@ -28,6 +28,9 @@
         .success-message h2 { font-size:2em; margin-bottom:15px; }
         .success-message p { font-size:1.2em; }
         .emoji { font-size:2em; }
+
+        /* Ny CSS for illustrasjonsbilder */
+        .illustration img { max-width:100%; height:auto; border-radius:8px; margin-bottom:12px; display:block; }
     </style>
 </head>
 <body>
@@ -50,6 +53,12 @@
             <div class="question-card">
                 <div class="question-number">Spørsmål 2</div>
                 <div class="clue"><strong>Ledetekst:</strong> Finn et <strong>hage</strong> med bitte små <strong>stener</strong> på svenskekysten utenfor Fjallbacka</div>
+
+                <!-- NY: illustrasjonsbilde for spørsmål 2 -->
+                <div class="illustration">
+                    <img src="images/rebus2.jpeg" alt="Illustrasjon for spørsmål 2">
+                </div>
+
                 <div class="answer-section">
                     <label for="answer2">Ditt svar:</label>
                     <input type="text" id="answer2" placeholder="Skriv inn stedet her...">
