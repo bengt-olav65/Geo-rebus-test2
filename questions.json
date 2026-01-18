@@ -1,13 +1,7 @@
 [  
   {  
-    "question": "What is the capital of France?",  
-    "options": [  
-      "Paris",  
-      "London",  
-      "Berlin",  
-      "Madrid"  
-    ],  
-    "answer": "Paris"  
+    "question": "Hvilken adresse har Haugsbu?",  
+    "answer": "Storlidalsvegen 1933"  
   },  
   {  
     "question": "What is 2 + 2?",  
