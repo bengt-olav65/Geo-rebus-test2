@@ -7,7 +7,7 @@
     <style>
         /* (samme stil som før) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display:flex; justify-content:center; align-items:flex-start; padding:40px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display:flex; justify-content:center; align-items:center; padding:40px; }
         .container { background:white; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.3); max-width:800px; width:100%; padding:40px; }
         h1 { color:#667eea; text-align:center; margin-bottom:10px; font-size:2.5em; }
         .subtitle { text-align:center; color:#666; margin-bottom:40px; font-size:1.1em; }
@@ -43,9 +43,13 @@
                 <div class="question-number">Spørsmål 1</div>
                 <div class="clue"><strong>Ledetekst:</strong> Finn et sted med mange <strong>småkryp</strong> som har <strong>6 års bursdag</strong> i Oslo</div>
 
-                <!-- NY: illustrasjonsbilde for spørsmål 1 -->
+                <!-- Illustrasjonsbilde for spørsmål 1 -->
+                <!-- Fallback: dersom images/rebus1.jpeg mangler, bytt til placeholder for å unngå ødelagte bilder -->
                 <div class="illustration">
-                    <img src="images/rebus1.jpeg" alt="Illustrasjon for spørsmål 1">
+                    <img src="images/rebus1.jpeg"
+                         alt="Illustrasjon for spørsmål 1"
+                         loading="lazy"
+                         onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=Rebus+1+illustrasjon';">
                 </div>
                  
                 <div class="answer-section">
@@ -60,9 +64,13 @@
                 <div class="question-number">Spørsmål 2</div>
                 <div class="clue"><strong>Ledetekst:</strong> Finn et <strong>hage</strong> med bitte små <strong>stener</strong> på svenskekysten utenfor Fjallbacka</div>
 
-                <!-- NY: illustrasjonsbilde for spørsmål 2 -->
+                <!-- Illustrasjonsbilde for spørsmål 2 -->
+                <!-- Fallback: dersom images/rebus2.jpeg mangler, bytt til placeholder for å unngå ødelagte bilder -->
                 <div class="illustration">
-                    <img src="images/rebus2.jpeg" alt="Illustrasjon for spørsmål 2">
+                    <img src="images/rebus2.jpeg"
+                         alt="Illustrasjon for spørsmål 2"
+                         loading="lazy"
+                         onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=Rebus+2+illustrasjon';">
                 </div>
 
                 <div class="answer-section">
