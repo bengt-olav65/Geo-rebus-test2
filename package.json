@@ -1,0 +1,28 @@
+{
+  "name": "geo-rebus-test2",
+  "version": "1.0.0",
+  "description": "A geography rebus game with background images",
+  "main": "index.html",
+  "scripts": {
+    "optimize-images": "node scripts/optimize-images.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bengt-olav65/Geo-rebus-test2.git"
+  },
+  "keywords": [
+    "rebus",
+    "geography",
+    "quiz",
+    "game"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bengt-olav65/Geo-rebus-test2/issues"
+  },
+  "homepage": "https://github.com/bengt-olav65/Geo-rebus-test2#readme",
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
+}
