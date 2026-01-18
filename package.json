@@ -1,0 +1,11 @@
+{
+  "name": "rebus-site",
+  "version": "1.0.0",
+  "description": "Lite statisk eksempel: rebus med bakgrunnsbilde for spørsmål 2",
+  "scripts": {
+    "optimize-images": "node scripts/optimize-images.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.32.0"
+  }
+}

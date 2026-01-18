@@ -1,194 +1,42 @@
-<!DOCTYPE html>
-<html lang="no">
+<!doctype html>
+<html lang="nb">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geo-Rebus - Finn Stedene!</title>
-    <style>
-        /* (samme stil som før) */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display:flex; justify-content:center; align-items:center; padding:20px; }
-        .container { background:white; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.3); max-width:800px; width:100%; padding:40px; }
-        h1 { color:#667eea; text-align:center; margin-bottom:10px; font-size:2.5em; }
-        .subtitle { text-align:center; color:#666; margin-bottom:40px; font-size:1.1em; }
-        .question-card { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius:15px; padding:30px; margin-bottom:30px; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
-        .questions .question-card:nth-child(even) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .question-number { color:white; font-size:1.2em; font-weight:bold; margin-bottom:15px; }
-        .clue { background: rgba(255,255,255,0.9); padding:20px; border-radius:10px; margin-bottom:20px; color:#333; font-size:1.1em; line-height:1.6; }
-        .clue strong { color:#764ba2; }
-        .answer-section { margin-top:20px; }
-        label { display:block; color:white; font-weight:bold; margin-bottom:8px; }
-        input[type="text"] { width:100%; padding:12px; border:none; border-radius:8px; font-size:1em; margin-bottom:10px; }
-        button { background:#764ba2; color:white; border:none; padding:12px 30px; border-radius:8px; font-size:1em; cursor:pointer; transition:all 0.3s; font-weight:bold; }
-        button:hover { background:#5a3780; transform:translateY(-2px); box-shadow:0 5px 15px rgba(0,0,0,0.3); }
-        .feedback { margin-top:10px; padding:10px; border-radius:8px; font-weight:bold; display:none; }
-        .feedback.correct { background:#4caf50; color:white; display:block; }
-        .feedback.incorrect { background:#f44336; color:white; display:block; }
-        .success-message { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color:white; padding:30px; border-radius:15px; text-align:center; display:none; margin-top:30px; }
-        .success-message h2 { font-size:2em; margin-bottom:15px; }
-        .success-message p { font-size:1.2em; }
-        .emoji { font-size:2em; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rebus — Spørsmål</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>🗺️ Geo-Rebus</h1>
-        <p class="subtitle">Finn de hemmelige stedene ved å løse gåtene!</p>
+  <main class="container">
+    <header>
+      <h1>Rebus</h1>
+      <p class="lead">Velg riktig svar for hvert spørsmål.</p>
+    </header>
 
-        <div class="questions">
-            <div class="question-card">
-                <div class="question-number">Spørsmål 1</div>
-                <div class="clue"><strong>Ledetekst:</strong> Finn et sted med mange <strong>småkryp</strong> som har <strong>6 års bursdag</strong> i Oslo</div>
-                <div class="answer-section">
-                    <label for="answer1">Ditt svar:</label>
-                    <input type="text" id="answer1" placeholder="Skriv inn stedet her...">
-                    <button onclick="checkAnswer(1)">Sjekk Svar</button>
-                    <div id="feedback1" class="feedback"></div>
-                </div>
-            </div>
+    <section class="question" id="q1" aria-labelledby="q1-title">
+      <h2 id="q1-title">Spørsmål 1</h2>
+      <p>Tekst for spørsmål 1 — vanlig innhold.</p>
+    </section>
 
-            <div class="question-card">
-                <div class="question-number">Spørsmål 2</div>
-                <div class="clue"><strong>Ledetekst:</strong> Finn et <strong>hage</strong> med bitte små <strong>stener</strong> på svenskekysten utenfor Fjallbacka</div>
-                <div class="answer-section">
-                    <label for="answer2">Ditt svar:</label>
-                    <input type="text" id="answer2" placeholder="Skriv inn stedet her...">
-                    <button onclick="checkAnswer(2)">Sjekk Svar</button>
-                    <div id="feedback2" class="feedback"></div>
-                </div>
-            </div>
+    <section
+      class="question question--bg"
+      id="q2"
+      aria-labelledby="q2-title"
+      aria-label="Illustrasjon for spørsmål 2. Beskrivelse: bilde av en gåte eller illustrasjon som støtter rebusen."
+      data-bg-jpg="/images/rebus2.jpg"
+      data-bg-webp="/images/rebus2.webp"
+    >
+      <div class="question__content">
+        <h2 id="q2-title">Spørsmål 2</h2>
+        <p>Dette spørsmålet bruker bildet som bakgrunn. Les beskrivelsen ovenfor hvis bildet inneholder viktig informasjon.</p>
+        <img class="visually-hidden" src="/images/rebus2.jpg" alt="Beskrivelse: et illustrasjonsbilde til rebusen som viser relevant motiv for spørsmålet.">
+      </div>
+    </section>
 
-            <div class="question-card">
-                <div class="question-number">Spørsmål 3</div>
-                <div class="clue"><strong>Ledetekst:</strong> Hva er adressen til Haugsbu?</div>
-                <div class="answer-section">
-                    <label for="answer3">Ditt svar:</label>
-                    <input type="text" id="answer3" placeholder="Skriv inn stedet her...">
-                    <button onclick="checkAnswer(3)">Sjekk Svar</button>
-                    <div id="feedback3" class="feedback"></div>
-                </div>
-            </div>
-        </div>
-
-        <div id="successMessage" class="success-message">
-            <h2><span class="emoji">🎉</span> Gratulerer! <span class="emoji">🎉</span></h2>
-            <p>Du har løst alle gåtene!</p>
-            <p>Du er en ekte geo-rebus mester! 🏆</p>
-        </div>
-    </div>
-
-    <script>
-        // Riktige svar (kan være streng eller array av alternativer)
-        const answers = {
-            1: "Maurstien 6",
-            2: "Sandhagen 2", 
-            3: "Storlidalsvegen 1933"
-        };
-
-        const solved = { 1: false, 2: false, 3: false };
-
-        // Normaliser brukerinput og riktig svar:
-        // - Unicode normalisering
-        // - fjerner diakritika
-        // - holder bokstaver, tall, mellomrom og bindestrek
-        // - gjør alt lowercase
-        function normalizeAnswer(answer) {
-            if (!answer) return "";
-            // fjern diakritika og normaliser
-            const noDiacritics = answer.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
-            // behold bokstaver (unicode), tall, mellomrom og bindestrek
-            return noDiacritics
-                .toLowerCase()
-                .replace(/[^\p{L}\p{N}\s-]/gu, '')
-                .replace(/\s+/g, ' ')
-                .trim();
-        }
-
-        // Levenshtein avstand
-        function levenshtein(a, b) {
-            const an = a.length, bn = b.length;
-            if (an === 0) return bn;
-            if (bn === 0) return an;
-            const matrix = Array.from({length: an + 1}, () => Array(bn + 1).fill(0));
-            for (let i=0;i<=an;i++) matrix[i][0]=i;
-            for (let j=0;j<=bn;j++) matrix[0][j]=j;
-            for (let i=1;i<=an;i++) {
-                for (let j=1;j<=bn;j++) {
-                    const cost = a[i-1] === b[j-1] ? 0 : 1;
-                    matrix[i][j] = Math.min(
-                        matrix[i-1][j] + 1,
-                        matrix[i][j-1] + 1,
-                        matrix[i-1][j-1] + cost
-                    );
-                }
-            }
-            return matrix[an][bn];
-        }
-
-        // Token overlap: hvor stor andel av korteste tokens som matcher
-        function tokenOverlapRatio(a, b) {
-            const at = a.split(' ').filter(Boolean);
-            const bt = b.split(' ').filter(Boolean);
-            if (at.length === 0 || bt.length === 0) return 0;
-            const setB = new Set(bt);
-            const common = at.filter(t => setB.has(t)).length;
-            return common / Math.min(at.length, bt.length);
-        }
-
-        // Hovedsjekk: kombinerer ulike heuristikker
-        function isAnswerCorrect(userAnswerRaw, correctAnswerRaw) {
-            const ua = normalizeAnswer(userAnswerRaw);
-            const ca = normalizeAnswer(correctAnswerRaw);
-            if (!ua || !ca) return false;
-
-            // eksakt eller inkluderingssjekk
-            if (ua === ca) return true;
-            if (ua.includes(ca) || ca.includes(ua)) return true;
-
-            // token overlap (for delvise adresser)
-            if (tokenOverlapRatio(ua, ca) >= 0.6) return true;
-
-            // Levenshtein: aksepter inntil 25% feil relativt til lengste streng
-            const dist = levenshtein(ua, ca);
-            const maxLen = Math.max(ua.length, ca.length);
-            if (maxLen > 0 && (dist / maxLen) <= 0.25) return true;
-
-            return false;
-        }
-
-        function checkAnswer(questionNumber) {
-            const input = document.getElementById('answer' + questionNumber);
-            const feedback = document.getElementById('feedback' + questionNumber);
-            const userAnswer = input.value || '';
-            const correct = answers[questionNumber];
-
-            let matched = false;
-            if (Array.isArray(correct)) {
-                matched = correct.some(c => isAnswerCorrect(userAnswer, c));
-            } else {
-                matched = isAnswerCorrect(userAnswer, correct);
-            }
-
-            if (matched) {
-                feedback.className = 'feedback correct';
-                feedback.textContent = '✓ Riktig! Godt jobbet!';
-                solved[questionNumber] = true;
-                input.disabled = true;
-
-                if (Object.values(solved).every(v => v === true)) {
-                    document.getElementById('successMessage').style.display = 'block';
-                }
-            } else {
-                feedback.className = 'feedback incorrect';
-                feedback.textContent = '✗ Ikke helt riktig. Prøv igjen!';
-            }
-        }
-
-        // Enter-tast for alle answer-felter
-        ['answer1','answer2','answer3'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener('keypress', function(e) { if (e.key === 'Enter') checkAnswer(Number(id.replace('answer',''))); });
-        });
-    </script>
+    <footer>
+      <p class="muted">© Ditt navn — Rebus</p>
+    </footer>
+  </main>
 </body>
 </html>
